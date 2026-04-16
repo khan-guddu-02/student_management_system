@@ -57,7 +57,7 @@ function Home() {
                       <td>
                         {s.photo ? (
                           <img
-                            src={`http://localhost:5000/${s.photo}`}
+                            src={`${s.photo}`}
                             alt="student"
                             className="rounded-circle shadow-sm"
                             style={{
