@@ -29,7 +29,7 @@ function ViewStudent() {
             <div className="text-center mb-3">
               {student.photo ? (
                 <img
-                  src={`http://localhost:5000/${student.photo}`}
+                  src={`${student.photo}`}
                   alt="student"
                   className="rounded-circle shadow"
                   style={{
