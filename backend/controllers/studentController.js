@@ -137,27 +137,30 @@ export const updateStudent = async (req, res) => {
       });
     }
 
-    //  If new photo uploaded
+    // If new photo uploaded
     if (req.file) {
-      // Delete old image (correct path)
       if (student.photo) {
-        const oldPath = path.join(process.cwd(), student.photo);
-        if (fs.existsSync(oldPath)) {
-          fs.unlinkSync(oldPath);
+        const oldFileName = student.photo.split("/uploads/")[1];
+
+        if (oldFileName) {
+          const oldPath = path.join(process.cwd(), "uploads", oldFileName);
+
+          if (fs.existsSync(oldPath)) {
+            fs.unlinkSync(oldPath);
+          }
         }
       }
 
-      //  Save new image path (CORRECT)
+      //  NEW FIXED URL
       req.body.photo = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
     }
 
-    // Update student
     const updatedStudent = await Student.findByIdAndUpdate(
       id,
       {
         ...req.body,
-        year: Number(req.body.year),       
-        dob: new Date(req.body.dob),        
+        year: Number(req.body.year),
+        dob: new Date(req.body.dob),
       },
       {
         new: true,
@@ -172,13 +175,20 @@ export const updateStudent = async (req, res) => {
     });
 
   } catch (error) {
-  if (error.code === 11000) {
-    const field = Object.keys(error.keyValue)[0];
-    return res.status(400).json({
+    if (error.code === 11000) {
+      const field = Object.keys(error.keyValue)[0];
+      return res.status(400).json({
+        success: false,
+        message: `${field} already exists`,
+      });
+    }
+
+    return res.status(500).json({
       success: false,
-      message: `${field} already exists`,
+      message: "Server error",
     });
   }
+};
 
   return res.status(500).json({
     success: false,
