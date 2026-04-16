@@ -37,7 +37,7 @@ export const createStudent = async (req, res) => {
     let photo = null;
 
     if (req.file) {
-      photo = `uploads/${req.file.filename}`;
+       photo = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
     }
     console.log("step1")
     const student = await Student.create({
