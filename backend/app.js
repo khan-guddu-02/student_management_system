@@ -7,7 +7,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-  origin: "https://student-management-system-inky-seven.vercel.app/",
+  origin: "https://student-management-system-inky-seven.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
