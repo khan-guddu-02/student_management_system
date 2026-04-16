@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Axios instance
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL +"/api",
+  baseURL: import.meta.env.VITE_API_URL +"/api/students",
 });
 
 // GET all students
