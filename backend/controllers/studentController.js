@@ -148,7 +148,7 @@ export const updateStudent = async (req, res) => {
       }
 
       //  Save new image path (CORRECT)
-      req.body.photo = `uploads/${req.file.filename}`;
+      req.body.photo = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
     }
 
     // Update student
