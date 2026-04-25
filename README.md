@@ -155,28 +155,7 @@ const studentSchema = new mongoose.Schema({
 
 * Automatically generated for each student
 * Format example: **ADM001, ADM002**
-* Ensured uniqueness using database checks
-
----
-
-## 🌐 Deployment (Optional)
-
-* Frontend: Vercel / Netlify
-* Backend: Render / Railway
-* Database: MongoDB Atlas
-
----
-
-## 📸 Screenshots (Optional)
-
-*Add screenshots here for UI preview*
-
----
-
-## 📌 Submission Details
-
-* GitHub Repository Link: *(Add here)*
-* Hosted Website Link: *(If deployed)*
+* Ensured uniqueness using database check
 
 ---
 
